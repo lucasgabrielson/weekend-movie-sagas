@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const AddMovie = () => {
@@ -89,7 +90,8 @@ const AddMovie = () => {
             <select onChange = {handleGenreChange}>
                 {genres.map( ( genre, index ) => {return <option key = {index}>{genre.name}</option>})}
             </select>
-            <button onClick = { () => handleSubmit()}>Submit</button>
+            <button onClick = { () => handleSubmit()}>Save</button>
+            <Link to = '/'>Cancel</Link>
         </div>
     )
 }
