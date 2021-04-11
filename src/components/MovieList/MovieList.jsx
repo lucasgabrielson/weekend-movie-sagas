@@ -13,10 +13,10 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const toDetails = id => {
-        console.log( 'in toDetails' );
-        dispatch({ type: 'SET_DETAIL', payload: id });
-    } // end toDetails
+    // const toDetails = id => {
+    //     console.log( 'in toDetails' );
+    //     dispatch({ type: 'SET_DETAIL', payload: id });
+    // } // end toDetails
 
     return (
         <main>
@@ -25,8 +25,8 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <Link to = '/details/' key={movie.id}>
-                            <div onClick = {() => toDetails( movie.id )}>
+                        <Link to = {`/details/${movie.id}`} params={movie.id} key={movie.id}>
+                            <div>
                                 <h3>{movie.title}</h3>
                                 <img src={movie.poster} alt={movie.title}/>
                             </div>

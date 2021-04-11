@@ -32,7 +32,7 @@ function* fetchAllGenres() {
 function* setDetail(action) {
     console.log('in setDetail:', action);
     try {
-        const detail = yield axios.get('/api/detail/' + action.payload);
+        const detail = yield axios.get('/api/detail/' + action.payload, {params: action.payload});
         console.log('get details:', detail.data);
         yield put({ type: 'SET_DETAILS', payload: detail.data })
     } catch {
