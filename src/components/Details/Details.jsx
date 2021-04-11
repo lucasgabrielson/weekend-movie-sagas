@@ -17,12 +17,21 @@ const Details = () => {
 
     return (
         <div>
-            {JSON.stringify(detail[0])}
-            {/* I have no idea what is wrong here */}
+            <p>{Array.isArray(detail) ? <span>{detail[0].title}</span> : ''}</p>
+            
+            <br />
+            {Array.isArray(detail) ? <img src={detail[0].poster} /> : ''}
+
+            <p>Genres:</p>
             {Array.isArray(detail) ? detail.map( ( genre, index ) => { return ( <p key={index}>{genre.name}</p> )}) : ''}
+
+            <p>Description:</p>
+            <p>{Array.isArray(detail) ? <span>{detail[0].description}</span> : ''}</p>
+
+            {/* {JSON.stringify(detail[0].title)} */}
+            
             
             <Link to = '/'><button>Back to Movies List</button></Link>
-            <Link to = '/edit-movie'><button>Edit</button></Link>
             
         </div>
     )
