@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList';
 import Details from '../Details/Details';
 import AddMovie from '../AddMovie/AddMovie';
+import EditMovie from '../EditMovie/EditMovie';
 
 function App() {
   return (
@@ -10,15 +11,19 @@ function App() {
       <h1>The Movies Saga!</h1>
       <Router>        
         <Route path="/" exact>
-          <MovieList />
+          <MovieList/>
         </Route>
         
-        <Route path="/details" exact>
+        <Route path="/details/:id/" exact>
           <Details />
         </Route>
 
         <Route path='/add-movie' exact>
           <AddMovie />
+        </Route>
+
+        <Route path='/edit-movie' exact>
+          <EditMovie />
         </Route>
       </Router>
     </div>

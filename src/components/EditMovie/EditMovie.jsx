@@ -3,12 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const AddMovie = () => {
+const EditMovie = () => {
     useEffect( () => { getGenres() }, []);
 
     const dispatch = useDispatch();
 
     const [ movie, setMovie ] = useState( {} );
+
+    const detail = useSelector( store => {
+        return store.detail;
+    })
 
     const getGenres = () => {
         console.log( 'in getGenres' );
@@ -68,7 +72,7 @@ const AddMovie = () => {
     }
 
     const handleSubmit = () => {
-        console.log( movie );
+        console.log( detail );
         if( movie.title && movie.poster && movie.description && movie.genre_id ) {
             axios.post( '/api/movie', movie )
                 .then( response => {
@@ -84,9 +88,10 @@ const AddMovie = () => {
 
     return (
         <div>
-            <input onChange = { event => setMovie({ ...movie, title: event.target.value }) } type="text" placeholder="Title" />
-            <input onChange = { event => setMovie({ ...movie, poster: event.target.value }) } type="text" placeholder="url" />
-            <input onChange = { event => setMovie({ ...movie, description: event.target.value }) } type="text" placeholder="description" />
+            {JSON.stringify(detail.title)}
+            <input value = { detail.title } onChange = { event => setMovie({ ...movie, title: event.target.value }) } type="text" placeholder="Title" />
+            <input value = { detail.poster } onChange = { event => setMovie({ ...movie, poster: event.target.value }) } type="text" placeholder="url" />
+            <input value = { detail.description } onChange = { event => setMovie({ ...movie, description: event.target.value }) } type="text" placeholder="description" />
             <select onChange = {handleGenreChange}>
                 {genres.map( ( genre, index ) => {return <option key = {index}>{genre.name}</option>})}
             </select>
@@ -96,16 +101,4 @@ const AddMovie = () => {
     )
 }
 
-export default AddMovie
-
-/**
-- an input field (for the movie title)
-- an input field (for the movie poster image URL))
-- a textarea (for the movie description)
-- a dropdown (for the genres)
-
-The Add Movie page should have the buttons:
-
-- `Cancel` button, which should bring the user to the Home/List Page
-- `Save` button, which should update the title and description in the database and bring the user to the Home/List Page (which now has the new movie)
- */
+export default EditMovie
