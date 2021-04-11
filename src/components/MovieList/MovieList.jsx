@@ -25,7 +25,7 @@ function MovieList() {
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <Link to = '/details' key={movie.id}>
+                        <Link to = '/details/' key={movie.id}>
                             <div onClick = {() => toDetails( movie.id )}>
                                 <h3>{movie.title}</h3>
                                 <img src={movie.poster} alt={movie.title}/>

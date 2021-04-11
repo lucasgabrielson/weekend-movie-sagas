@@ -70,6 +70,7 @@ const movies = (state = [], action) => {
 const detail = (state = {}, action) => {
     switch( action.type ) {
         case 'SET_DETAILS':
+            state = action.payload;
             return action.payload;
         default:
             return state;
