@@ -21,8 +21,12 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
-            <Link to = '/add-movie'><button>Add Movie</button></Link>
-            <section className="movies">
+            <div className = 'headerbox'>
+                <Link to = '/add-movie'>
+                    <button>Add Movie</button>
+                </Link>
+            </div>
+            <section className="gridcontainer">
                 {movies.map(movie => {
                     return (
                         <Link to = {`/details/${movie.id}`} params={movie.id} key={movie.id}>
