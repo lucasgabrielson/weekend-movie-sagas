@@ -20,9 +20,8 @@
 
 .headerbox button{
   margin-top: 20px;
-  padding:10px 20px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  border-radius: 4px;
+  padding:10px 10px;
+  border-radius: 5px;
 }
 
 .App-header {
