@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovie = () => {
+    // load genres on component mount
     useEffect( () => { getGenres() }, []);
 
     const dispatch = useDispatch();
